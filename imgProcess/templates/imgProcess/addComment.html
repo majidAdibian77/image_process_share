@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block body_block %}
+    <h2>Add comment:</h2>
+    {% if user.is_authenticated %}
+        {% if comment_form %}
+            <p>لطفا نظر خود را ارسال کنید:</p>
+            <p>(نظرات پس از تایید ادمین نشان داده خواهند شد)</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit" class="save btn btn-default" >ارسال</button>
+            </form>
+        {% endif %}
+    {% else %}
+        <h3>You do not logged in yet!!</h3>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,78 @@
+body {
+    padding: 20px;
+    background-color: lightblue;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Header/Blog Title */
+.header {
+    padding: 30px;
+    font-size: 30px;
+    text-align: center;
+    background: coral;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+    float: left;
+    width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 30px;
+}
+
+.my_navbar {
+    background-color: dimgray;
+}
+
+.navbar-items{
+    color: black;
+}
+
+.my-navbar-items{
+
+    margin: 5px 10px 5px 10px;
+}
+
+.comment{
+    background: aliceblue;
+    border: brown solid thin;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+
+
+li {
+    margin: 5px;
+    background-color: cornsilk;
+    border-radius: 5px;
+}
+
+h2 {
+    background-color: khaki;
+}
+
+p {
+    font-size: larger;
+}

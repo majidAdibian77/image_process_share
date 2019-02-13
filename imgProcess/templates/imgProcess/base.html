@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Image processing</title>
+</head>
+<body>
+<nav class=" navbar-inverse navbar-fixed-top mynave my_navbar">
+    <ul class="nav navbar-nav navbar-right my-navbar-items">
+        <li><a class="navbar_brand bigbrand" href="{% url "home" %}"><b class="navbar-items">Home</b></a></li>
+        <li><a href="{% url "add_comment" %}"><b class="navbar-items">add comment</b></a></li>
+    </ul>
+    <ul class="nav navbar-nav my-navbar-items" >
+        {% if user.is_authenticated %}
+            <li style="background: cyan; border-radius: 5px"><a href="{% url  "logout" %}"><b class="navbar-items">welcome: {{ user.username }}</b></a></li>
+            <li><a href="{% url  "upload_image" %}"><b class="navbar-items">image process</b></a></li>
+            <li><a href="{% url  "logout" %}"><b class="navbar-items">log out</b></a></li>
+        {% else %}
+            <li><a class="nav navbar-right" href="{% url "login" %}"><b>login</b></a></li>
+        {% endif %}
+
+    </ul>
+</nav>
+
+<div class="header">
+    <h1>Image Process</h1>
+</div>
+
+<div class="row">
+    <div class="leftcolumn">
+        <div class="card">
+            {% block body_block %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="rightcolumn">
+        <div class="card">
+            <p><b>other:</b></p>
+            <div class="myLink">
+                <p><a href="{% url "home" %}">about image processing</a></p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="{% static "javascript/changeImage.js" %}"></script>
+</body>
+</html>
