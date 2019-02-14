@@ -3,7 +3,8 @@ function change_black_white() {
         type: "GET",
         url: '/change_black_white',
         data: {
-            "image_url": $('#show_image').attr('src')
+            "general_image_url": $('#show_image').attr('name'),
+            "new_image_url": $('#show_image').attr('src')
         },
         dataType: "json",
         success: function (data) {
@@ -64,7 +65,6 @@ function change_size() {
         height_image.val(500);
         height = 500;
     }
-    alert($('#show_image').attr('name'));
     $.ajax({
         type: "GET",
         url: '/change_size_of_image',

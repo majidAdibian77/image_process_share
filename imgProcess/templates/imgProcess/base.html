@@ -19,11 +19,12 @@
     </ul>
     <ul class="nav navbar-nav my-navbar-items" >
         {% if user.is_authenticated %}
-            <li style="background: cyan; border-radius: 5px"><a href="{% url  "logout" %}"><b class="navbar-items">welcome: {{ user.username }}</b></a></li>
+            <li style="background: cyan; border-radius: 5px"><a href="{% url  "logout" %}"><b class="navbar-items">welcome: {{ user.fist_name }} {{ user.last_name }}</b></a></li>
             <li><a href="{% url  "upload_image" %}"><b class="navbar-items">image process</b></a></li>
             <li><a href="{% url  "logout" %}"><b class="navbar-items">log out</b></a></li>
         {% else %}
-            <li><a class="nav navbar-right" href="{% url "login" %}"><b>login</b></a></li>
+            <li><a class="nav navbar-right" href="{% url "login" %}"><b class="navbar-items">login</b></a></li>
+            <li><a class="nav navbar-right" href="{% url "register" %}"><b class="navbar-items">register</b></a></li>
         {% endif %}
 
     </ul>

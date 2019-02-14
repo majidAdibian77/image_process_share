@@ -2,8 +2,9 @@ import numpy as np
 from PIL import Image, ImageEnhance
 from django.http import JsonResponse
 
+from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from imgProcess.forms import CommentForm, Upload
+from imgProcess.forms import CommentForm, Upload, UserForm, UserProfileInfoForm
 from imgProcess.models import CommentModel, ImageModel
 from django.views.generic import TemplateView, ListView, CreateView
 from django.contrib.auth.decorators import login_required
@@ -30,6 +31,34 @@ class CommentFormView(LoginRequiredMixin, CreateView):
     redirect_field_name = "imgProcess/home.html"
     form_class = CommentForm
     model = CommentModel
+
+
+def register(request):
+    registered = False
+    errors1 = ""
+    errors2 = ""
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileInfoForm(data=request.POST)
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            user.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            if 'profile_pic' in request.FILES:
+                profile.profile_pic = request.FILES['profile_pic']
+            profile.save()
+            registered = True
+            auth_user = authenticate(username=user_form.cleaned_data.get('username'),
+                                     password=user_form.cleaned_data.get('password1'))
+            login(request, auth_user)
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileInfoForm()
+    return render(request, "registration/register.html",
+                  {'user_form': user_form,
+                   'profile_form': profile_form,
+                   'registered': registered})
 
 
 def delete_image(request):
@@ -76,15 +105,24 @@ def upload_image(request):
     upload_form = Upload()
     error = ""
     if request.method == "POST":
-        upload_form = Upload(request.POST, request.FILES)
-        # upload_form.set_user(request.user.username)
+        upload_form = Upload(data=request.POST)
         if upload_form.is_valid():
-            if upload_form.cleaned_data["username"] != request.user.username:
-                error = "Your username is false"
-            else:
-                upload_form.save()
-
+            image_form = upload_form.save(commit=False)
+            image_form.username = request.user.username
+            if 'image' in request.FILES:
+                image_form.image = request.FILES['image']
+                image_form.save()
                 return redirect("change_image")
+        error = "There is a problem in uploading!!"
+    #     upload_form = Upload(request.POST, request.FILES)
+    #     # upload_form.set_user(request.user.username)
+    #     if upload_form.is_valid():
+    #         if upload_form.cleaned_data["username"] != request.user.username:
+    #             error = "Your username is false"
+    #         else:
+    #             upload_form.save()
+    #
+    #             return redirect("change_image")
     return render(request, "uploadImage.html", {"form": upload_form, "error": error})
 
 
@@ -102,10 +140,23 @@ def change_image(request):
 
 
 def change_black_white(request):
-    image_url = request.GET.get("image_url", None)
+    general_image_url = request.GET.get("general_image_url", None)
+    new_image_url = request.GET.get("new_image_url", None)
+    if general_image_url == new_image_url:
+        image_url = general_image_url
+        new_image_url = image_url[:image_url.rfind('.')] + "_new1" + image_url[image_url.rfind('.'):]
+    else:
+        image_url = new_image_url
+        path = general_image_url[:general_image_url.rfind('.')] + "_new1" + general_image_url[
+                                                                            general_image_url.rfind('.'):]
+        if new_image_url == path:
+            os.remove(path[1:])
+            new_image_url = general_image_url[:general_image_url.rfind('.')] + "_new2" + general_image_url[
+                                                                                         general_image_url.rfind('.'):]
+
     image_file = Image.open(image_url[1:])  # open colour image
     image_file = image_file.convert('L')  # convert image to black and white
-    new_image_url = image_url[:image_url.rfind('.')] + "_new1" + image_url[image_url.rfind('.'):]
+
     image_file.save(new_image_url[1:])
     data = {
         "newImage_url": new_image_url

@@ -26,6 +26,8 @@ urlpatterns = [
                   url(r'', include("imgProcess.urls")),
                   url(r'^account/login/$', djangoView.login, name="login"),
                   url(r'^account/logout/$', djangoView.logout, name="logout", kwargs={"next_page": views.home}),
+                  url(r'^register/$', views.register, name='register'),
+
                   url(r"^change_black_white$", views.change_black_white, name="change_black_white"),
                   url(r"^reset_image$", views.reset_image, name="reset_image"),
                   url(r"^change_size_of_image$", views.change_size_of_image, name="change_size_of_image"),

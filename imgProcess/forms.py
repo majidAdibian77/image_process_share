@@ -1,4 +1,7 @@
-from imgProcess.models import CommentModel, ImageModel
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
+from imgProcess.models import CommentModel, ImageModel, UserProfileInfo
 from django import forms
 
 
@@ -25,11 +28,28 @@ class CommentForm(forms.ModelForm):
 #             "password": forms.PasswordInput(),
 #         }
 
+class UserForm(UserCreationForm):
+    password1 = forms.CharField(widget=forms.PasswordInput())
+    password2 = forms.CharField(widget=forms.PasswordInput())
+    first_name = forms.CharField(max_length=30, required=True)
+    last_name = forms.CharField(max_length=30, required=True)
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
+
+
+class UserProfileInfoForm(forms.ModelForm):
+    class Meta:
+        model = UserProfileInfo
+        fields = ('profile_pic',)
+
 
 class Upload(forms.ModelForm):
     class Meta:
         model = ImageModel
-        fields = ["image", "username"]
+        fields = ("image",)
 
     # def __init__(self, *args, **kwargs):
     #     self.username = kwargs.pop('username')
