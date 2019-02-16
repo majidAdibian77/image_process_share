@@ -15,17 +15,6 @@ class CommentModel(models.Model):
         self.approved = True
         self.save()
 
-
-# class SignInModel(models.Model):
-#     name = models.CharField(max_length=20, verbose_name="Name")
-#     user_name = models.CharField(max_length=20, verbose_name="Username")
-#     password = models.CharField(max_length=20, verbose_name="password")
-#     email = models.EmailField()
-#
-
-# class MyUser(User):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE, parent_link=True)
-
 class UserProfileInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=100, blank=True, default="Bio")
@@ -47,6 +36,7 @@ class PostModel(models.Model):
     username = models.CharField(max_length=20, unique=False, verbose_name="Username", default="")
     image = models.ImageField(upload_to='user_images', blank=True)
     post = models.TextField(max_length=100, blank=True)
+
 
     def __str__(self):
         return self.username

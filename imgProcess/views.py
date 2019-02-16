@@ -55,7 +55,7 @@ def register(request):
             auth_user = authenticate(username=user_form.cleaned_data.get('username'),
                                      password=user_form.cleaned_data.get('password1'))
             login(request, auth_user)
-            return redirect("profile_page")
+            return redirect("profile_page", pk= user.id)
     else:
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
@@ -83,8 +83,8 @@ def delete_image(request):
 def home(request):
     delete_image(request)
     hash = {}
-    comments = CommentModel.objects.all()
-    hash["comments"] = comments
+    users = UserProfileInfo.objects.all()
+    hash["users"] = users
     return render(request, "imgProcess/home.html", hash)
 
 
@@ -274,9 +274,13 @@ def change_contract_image(request):
 #     return JsonResponse(data)
 
 
-def profile_page(request):
-    user_info = UserProfileInfo.objects.filter(user=request.user)
-    user_posts = PostModel.objects.filter(username=request.user.username)
+def profile_page(request, pk):
+    if pk:
+        user = User.objects.get(pk = pk)
+    else:
+        user = request.user
+    user_info = UserProfileInfo.objects.filter(user=user)
+    user_posts = PostModel.objects.filter(username=user.username)
     path = ""
     for temp in user_posts:
         path = temp.image.url

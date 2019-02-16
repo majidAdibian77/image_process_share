@@ -8,5 +8,5 @@ urlpatterns = [
     url(r"^add_comment$", views.add_comment, name="add_comment"),
     url(r'^upload_image/$', views.upload_image, name="upload_image"),
     url(r'^change_image/$', views.change_image, name="change_image"),
-    url(r'^profile_page/$', views.profile_page, name="profile_page"),
+    url(r'^profile_page/(?P<pk>\d+)$', views.profile_page, name="profile_page"),
 ]

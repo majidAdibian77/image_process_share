@@ -39,7 +39,7 @@
                         </div>
                     {% endif %}
                 {% endfor %}
-                <form action="{% url "profile_page" %}">
+                <form action="{% url "profile_page" pk=user.id %}">
                     <button type="submit">POST</button>
                 </form>
             </div>
