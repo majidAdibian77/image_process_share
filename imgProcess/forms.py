@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from imgProcess.models import CommentModel, ImageModel, UserProfileInfo
+from imgProcess.models import CommentModel, UserProfileInfo, PostModel
 from django import forms
 
 
@@ -43,13 +43,19 @@ class UserForm(UserCreationForm):
 class UserProfileInfoForm(forms.ModelForm):
     class Meta:
         model = UserProfileInfo
-        fields = ('profile_pic',)
+        fields = ('profile_pic', 'bio',)
 
 
-class Upload(forms.ModelForm):
+# class Upload(forms.ModelForm):
+#     class Meta:
+#         model = ImageModel
+#         fields = ("image",)
+
+
+class PostForm(forms.ModelForm):
     class Meta:
-        model = ImageModel
-        fields = ("image",)
+        model = PostModel
+        fields = ("image", "post",)
 
     # def __init__(self, *args, **kwargs):
     #     self.username = kwargs.pop('username')

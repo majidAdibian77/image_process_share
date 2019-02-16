@@ -28,15 +28,25 @@ class CommentModel(models.Model):
 
 class UserProfileInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=100, blank=True, default="Bio")
     profile_pic = models.ImageField(upload_to='profile_users', blank=True)
 
     def __str__(self):
         return self.user.username
 
 
-class ImageModel(models.Model):
-    username = models.CharField(max_length=20, verbose_name="Username", default="")
+# class ImageModel(models.Model):
+#     username = models.CharField(max_length=20, verbose_name="Username", default="")
+#     image = models.ImageField(upload_to='user_images', blank=True)
+#
+#     def __str__(self):
+#         return self.username
+
+
+class PostModel(models.Model):
+    username = models.CharField(max_length=20, unique=False, verbose_name="Username", default="")
     image = models.ImageField(upload_to='user_images', blank=True)
+    post = models.TextField(max_length=100, blank=True)
 
     def __str__(self):
         return self.username

@@ -44,16 +44,16 @@ body {
     background-color: dimgray;
 }
 
-.navbar-items{
+.navbar-items {
     color: black;
 }
 
-.my-navbar-items{
+.my-navbar-items {
 
     margin: 5px 10px 5px 10px;
 }
 
-.comment{
+.comment {
     background: aliceblue;
     border: brown solid thin;
     padding: 10px;
@@ -62,6 +62,11 @@ body {
 }
 
 
+.left-column-profile {
+    float: left;
+    width: 25%;
+    padding-left: 30px;
+}
 
 li {
     margin: 5px;

@@ -3,25 +3,47 @@
 {% load static %}
 {% block body_block %}
     <h2>change your image:</h2>
-
-    <button onclick="change_black_white();">B_W</button>
-    <p></p>
-    <button onclick="reset_image();">reset</button>
-    <p></p>
-    <label for="height_image">height</label>
-    <input type="number" id="height_image" min="300" max="600">
-    <label for="width_image">width</label>
-    <input type="number" id="width_image" min="200" max="500">
-    <button onclick="change_size();">change</button>
-    <div style="border: crimson solid thin; padding: 10px">
-        <label for="contract_range">contract</label>
-        <input onchange="change_contract();" type="range" min="0" max="2" value="1" step="0.1" class="slider" id="contract_range" style="margin: 5px">
+    <div class=container>
+        <div class="change_image">
+            <div class="row">
+                <div class="change-image-buttons">
+                    <div class="column_buttons">
+                        <button onclick="reset_image();">reset</button>
+                        <button onclick="change_black_white();">B_W</button>
+                    </div>
+                    <div class="column_buttons">
+                        <label for="height_image">height</label>
+                        <input type="number" id="height_image" min="300" max="600">
+                        <label for="width_image">width</label>
+                        <input type="number" id="width_image" min="200" max="500">
+                        <button onclick="change_size();">resize</button>
+                    </div>
+                    <div class="change-contract-range">
+                        <label for="contract_range">contract</label>
+                        <input onchange="change_contract();" type="range" min="0" max="2" value="1" step="0.1"
+                               class="slider"
+                               id="contract_range">
+                    </div>
+                </div>
+                {% for img in all_image %}
+                    {% if img.username == user.username %}
+                        <div class="image">
+                            <img id="show_image" name="{{ img.image.url }}" src="{{ img.image.url }}" alt="your image"
+                                 width="{{ img.image.width }}"
+                                 height="{{ img.image.height }}"
+                                 style="margin: 20px"/>
+                        </div>
+                        <div class="text-post">
+                            <label for="post">post:</label>
+                            <p id="post">{{ img.post }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <form action="{% url "profile_page" %}">
+                    <button type="submit">POST</button>
+                </form>
+            </div>
+        </div>
     </div>
-    {% for img in all_image %}
-        {% if img.username == user.username %}
-            <img id="show_image" name="{{ img.image.url }}" src="{{ img.image.url }}" alt="your image" width="400"
-                 height="500"
-                 style="margin: 20px"/>
-        {% endif %}
-    {% endfor %}
+
 {% endblock %}

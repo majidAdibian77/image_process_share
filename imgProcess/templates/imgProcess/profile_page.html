@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block body_block %}
+    <h2>Profile:</h2>
+    {% for temp_user_info in user_info %}
+        <div class="profile_page">
+            <img src="{{ temp_user_info.profile_pic.url }}" width="400" height="400">
+            <h3><b>Name: {{ temp_user_info.user.first_name }} {{ temp_user_info.user.last_name }}</b></h3>
+            <h3><b>Bio: </b>{{ temp_user_info.bio }}</h3>
+        </div>
+    {% endfor %}
+    <h2>Posts:</h2>
+    {% for temp_user_posts in user_posts %}
+        <div class="profile_page">
+            <img src="{{ temp_user_posts.image.url }}" width="{{ temp_user_posts.image.width }}" height="{{ temp_user_posts.image.height }}">
+            <h3><b>{{ temp_user_posts.post }}</b></h3>
+        </div>
+    {% endfor %}
+{% endblock %}

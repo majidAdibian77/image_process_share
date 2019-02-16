@@ -102,3 +102,20 @@ function change_contract() {
         }
     });
 }
+//
+// function Post() {
+//          $.ajax({
+//         type: "GET",
+//         url: '/add_post',
+//         data: {
+//             "general_image_url": $('#show_image').attr('name'),
+//             "new_image_url": $('#show_image').attr('src'),
+//             "post": $('#post').val(),
+//         },
+//         dataType: "json",
+//         success: function (data) {
+//         },
+//         failure: function (data) {
+//             alert('There is a problem!!!');
+//         }
+//     });

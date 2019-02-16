@@ -5,6 +5,7 @@
 
 
 <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/other.css" %}">
 
 
 <head>
@@ -14,17 +15,23 @@
 <body>
 <nav class=" navbar-inverse navbar-fixed-top mynave my_navbar">
     <ul class="nav navbar-nav navbar-right my-navbar-items">
-        <li><a class="navbar_brand bigbrand" href="{% url "home" %}"><b class="navbar-items">Home</b></a></li>
+        <li><a href="{% url "home" %}"><b class="navbar-items">Home</b></a></li>
         <li><a href="{% url "add_comment" %}"><b class="navbar-items">add comment</b></a></li>
     </ul>
-    <ul class="nav navbar-nav my-navbar-items" >
+    <ul class="nav navbar-nav my-navbar-items">
         {% if user.is_authenticated %}
-            <li style="background: cyan; border-radius: 5px"><a href="{% url  "logout" %}"><b class="navbar-items">welcome: {{ user.fist_name }} {{ user.last_name }}</b></a></li>
-            <li><a href="{% url  "upload_image" %}"><b class="navbar-items">image process</b></a></li>
+            {% if user.first_name != "" %}
+                <li style="background: cyan; border-radius: 5px"><a href="{% url  "profile_page" %}"><b class="navbar-items">welcome: {{ user.fist_name }}</b></a>
+                </li>
+            {% else %}
+                <li style="background: cyan; border-radius: 5px"><a href="{% url  "profile_page" %}"><b class="navbar-items">welcome: {{ user.username }}</b></a>
+                </li>
+            {% endif %}
+            <li><a href="{% url  "upload_image" %}"><b class="navbar-items">add post</b></a></li>
             <li><a href="{% url  "logout" %}"><b class="navbar-items">log out</b></a></li>
         {% else %}
-            <li><a class="nav navbar-right" href="{% url "login" %}"><b class="navbar-items">login</b></a></li>
-            <li><a class="nav navbar-right" href="{% url "register" %}"><b class="navbar-items">register</b></a></li>
+            <li><a href="{% url "login" %}"><b class="navbar-items">login</b></a></li>
+            <li><a href="{% url "register" %}"><b class="navbar-items">register</b></a></li>
         {% endif %}
 
     </ul>

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
 {% block body_block %}
-    <h2>Select your image:</h2>
-    <div class="form" style="padding: 30px">
-        <p>Please upload your image:</p>
-        <p>{{ error }}</p>
-        {% if form %}
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="save btn btn-default">Upload</button>
-            </form>
-        {% endif %}
+    <div class="container">
+        <div class="jumbotron my_form">
+            <h2>Select your image:</h2>
+            <p>Please upload your image:</p>
+            <p>{{ error }}</p>
+            {% if form %}
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="save btn btn-default">Upload</button>
+                </form>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}

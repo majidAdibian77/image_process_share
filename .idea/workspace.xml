@@ -2,24 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca5fcd3c-d86e-4a4d-ac84-94d2b9558e98" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgProcess/migrations/0002_auto_20190214_0309.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imgProcess/templates/registration/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/profile_users/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgProcess/migrations/0002_remove_userprofileinfo_bio.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgProcess/migrations/0003_auto_20190215_2048.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgProcess/migrations/0004_userprofileinfo_bio.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgProcess/static/css/other.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgProcess/templates/imgProcess/profile_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imageProcessing/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/imageProcessing/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgProcess/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgProcess/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgProcess/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgProcess/migrations/0002_auto_20190211_1514.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgProcess/migrations/0002_auto_20190214_0309.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/imgProcess/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgProcess/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/static/css/base.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgProcess/static/javascript/changeImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/static/javascript/changeImage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgProcess/templates/imgProcess/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/templates/imgProcess/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgProcess/templates/imgProcess/change_image.html" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/templates/imgProcess/change_image.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgProcess/templates/imgProcess/uploadImage.html" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/templates/imgProcess/uploadImage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgProcess/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgProcess/templates/registration/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/templates/registration/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgProcess/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgProcess/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/imgProcess/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/user_images/download.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/user_images/download_new.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/user_images/download_new1.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,57 +55,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/imgProcess/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="151" column="33" selection-start-line="151" selection-start-column="33" selection-end-line="151" selection-end-column="33" />
+            <state relative-caret-position="56">
+              <caret line="168" column="43" lean-forward="true" selection-start-line="168" selection-start-column="43" selection-end-line="168" selection-end-column="43" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="changeImage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imgProcess/static/javascript/changeImage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="63" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imgProcess/templates/registration/register.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="32" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imgProcess/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="30" column="60" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="۲۰۱۵۱۰۲۳_۰۹۱۸۵۷.jpg" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/media/profile_users/۲۰۱۵۱۰۲۳_۰۹۱۸۵۷.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imgProcess/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="51" column="26" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#54#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,17 +70,79 @@
       <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+            <state relative-caret-position="243">
+              <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functional.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../untitled/venv/Lib/site-packages/django/utils/functional.py">
+      <file leaf-file-name="download.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/media/user_images/download.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file leaf-file-name="change_image.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/change_image.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="323">
+              <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="other.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imgProcess/static/css/other.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="436">
+              <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imgProcess/templates/registration/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imgProcess/templates/registration/register.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imgProcess/static/css/base.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imgProcess/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="46" column="47" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -131,17 +152,21 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="Python Script" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>form</find>
+      <find>Upload</find>
     </findStrings>
+    <replaceStrings>
+      <replace>PostForm</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -159,22 +184,24 @@
         <option value="$PROJECT_DIR$/imgProcess/templates/imgProcess/signin.html" />
         <option value="$PROJECT_DIR$/imgProcess/templates/imgProcess/imgProc.html" />
         <option value="$PROJECT_DIR$/imgProcess/templates/imgProcess/comments.html" />
-        <option value="$PROJECT_DIR$/imgProcess/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/imgProcess/templates/imgProcess/addComment.html" />
-        <option value="$PROJECT_DIR$/imgProcess/templates/imgProcess/uploadImage.html" />
         <option value="$PROJECT_DIR$/imageProcessing/settings.py" />
-        <option value="$PROJECT_DIR$/imgProcess/urls.py" />
         <option value="$PROJECT_DIR$/imgProcess/templates/imgProcess/home.html" />
-        <option value="$PROJECT_DIR$/imgProcess/static/css/base.css" />
-        <option value="$PROJECT_DIR$/imgProcess/templates/imgProcess/change_image.html" />
+        <option value="$PROJECT_DIR$/imgProcess/templates/registration/login.html" />
+        <option value="$PROJECT_DIR$/imgProcess/templates/imgProcess/uploadImage.html" />
+        <option value="$PROJECT_DIR$/imgProcess/urls.py" />
+        <option value="$PROJECT_DIR$/imgProcess/templates/registration/register.html" />
+        <option value="$PROJECT_DIR$/imgProcess/static/javascript/changeImage.js" />
         <option value="$PROJECT_DIR$/imageProcessing/urls.py" />
         <option value="$PROJECT_DIR$/imgProcess/admin.py" />
-        <option value="$PROJECT_DIR$/imgProcess/templates/registration/register.html" />
-        <option value="$PROJECT_DIR$/imgProcess/templates/imgProcess/base.html" />
         <option value="$PROJECT_DIR$/imgProcess/forms.py" />
-        <option value="$PROJECT_DIR$/imgProcess/static/javascript/changeImage.js" />
-        <option value="$PROJECT_DIR$/imgProcess/views.py" />
+        <option value="$PROJECT_DIR$/imgProcess/templates/imgProcess/profile_page.html" />
         <option value="$PROJECT_DIR$/imgProcess/models.py" />
+        <option value="$PROJECT_DIR$/imgProcess/templates/imgProcess/base.html" />
+        <option value="$PROJECT_DIR$/imgProcess/static/css/base.css" />
+        <option value="$PROJECT_DIR$/imgProcess/views.py" />
+        <option value="$PROJECT_DIR$/imgProcess/static/css/other.css" />
+        <option value="$PROJECT_DIR$/imgProcess/templates/imgProcess/change_image.html" />
       </list>
     </option>
   </component>
@@ -265,7 +292,13 @@
               <item name="imageProcessing" type="b2602c69:ProjectViewProjectNode" />
               <item name="imageProcessing" type="462c0819:PsiDirectoryNode" />
               <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="profile_users" type="462c0819:PsiDirectoryNode" />
+              <item name="server_images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="imageProcessing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="imageProcessing" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="user_images" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -344,11 +377,18 @@
       <option name="presentableId" value="Default" />
       <updated>1548672628549</updated>
     </task>
+    <task id="LOCAL-00001" summary="complete registering...">
+      <created>1550102618500</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1550102618500</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5019531" side_tool="true" weight="0.31586206" />
@@ -362,7 +402,7 @@
       <window_info anchor="right" id="Database" order="4" weight="0.3294271" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="manage.py@imageProcessing" order="11" sideWeight="0.49804688" visible="true" weight="0.2551724" />
+      <window_info anchor="bottom" id="manage.py@imageProcessing" order="11" sideWeight="0.49804688" visible="true" weight="0.31724137" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -380,12 +420,16 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="complete registering..." />
+    <option name="LAST_COMMIT_MESSAGE" value="complete registering..." />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/imgProcess/views.py</url>
-          <line>238</line>
+          <line>320</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -393,26 +437,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/imageProcessing/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imgProcess/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled/venv/Lib/site-packages/django/db/models/options.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3774">
-          <caret line="240" selection-start-line="240" selection-end-line="240" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imgProcess/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imgProcess/migrations/0002_delete_signinmodel.py" />
     <entry file="file://$PROJECT_DIR$/imgProcess/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -438,22 +462,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/uploadImage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imageProcessing/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2091">
           <caret line="123" column="24" selection-start-line="123" selection-start-column="24" selection-end-line="123" selection-end-column="24" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imgProcess/templates/registration/login.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/media/user_images/download_qNs3Pd6.jpg" />
     <entry file="file://$PROJECT_DIR$/media/user_images/۲۰۱۵۱۰۲۳_۰۹۴۶۴۵_RichtoneHDR_KwnBARs.jpg" />
@@ -464,16 +478,6 @@
     <entry file="file://$PROJECT_DIR$/media/user_images/download_algNnD8.jpg" />
     <entry file="file://$PROJECT_DIR$/media/user_images/download_algNnD_new.jpg" />
     <entry file="file://$PROJECT_DIR$/media/user_images/downloa_new.jpg" />
-    <entry file="file://$PROJECT_DIR$/imgProcess/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="69" selection-start-line="9" selection-start-column="69" selection-end-line="9" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/23248441/nt.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-594">
@@ -483,14 +487,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/media/user_images/۲۰۱۵۱۰۲۳_۰۹۴۶۴۵_RichtoneHDR_trEo5aP.jpg" />
     <entry file="file://$PROJECT_DIR$/media/user_images/۲۰۱۵۱۰۲۳_۰۹۱۸۵۷.jpg" />
-    <entry file="file://$PROJECT_DIR$/media/user_images/۲۰۱۵۱۰۲۳_۰۹۴۶۴۵_RichtoneHDR.jpg" />
     <entry file="file://$PROJECT_DIR$/media/user_images/۲۰۱۵۱۰۲۳_۰۹۴۶۴۵_RichtoneHDR_Dz7GkHR.jpg" />
     <entry file="file://$PROJECT_DIR$/media/user_images/download_new_new_new.jpg" />
     <entry file="file://$PROJECT_DIR$/media/user_images/download_new_new_new_new.jpg" />
     <entry file="file://$PROJECT_DIR$/media/user_images/download_new_new_new_new_new_new.jpg" />
     <entry file="file://$PROJECT_DIR$/media/user_images/download_new_new_new_new_new.jpg" />
     <entry file="file://$PROJECT_DIR$/media/user_images/download_new_new.jpg" />
-    <entry file="file://$PROJECT_DIR$/media/user_images/download.jpg" />
     <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/addComment.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -498,48 +500,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/home.html">
+    <entry file="file://$PROJECT_DIR$/../untitled/venv/Lib/site-packages/django/utils/functional.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
-          <folding>
-            <element signature="e#1767#1802#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="561">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imgProcess/static/css/base.css">
+    <entry file="file://$PROJECT_DIR$/media/user_images/download_new.jpg" />
+    <entry file="file://$PROJECT_DIR$/media/user_images/download_4dkSrTa_new2_new1.jpg" />
+    <entry file="file://$PROJECT_DIR$/media/user_images/download_4dkSrTa_new2.jpg" />
+    <entry file="file://$PROJECT_DIR$/media/user_images/download_4dkSrTa.jpg" />
+    <entry file="file://$PROJECT_DIR$/media/profile_users/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/media/profile_users/۲۰۱۵۱۰۲۳_۰۹۱۸۵۷.jpg" />
+    <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/uploadImage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+        <state relative-caret-position="102">
+          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/change_image.html">
+    <entry file="file://$PROJECT_DIR$/imgProcess/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="170">
+          <caret line="10" column="66" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imageProcessing/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="28" column="71" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
-          <folding>
-            <element signature="e#639#671#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="476">
+          <caret line="33" column="109" selection-start-line="33" selection-start-column="109" selection-end-line="33" selection-end-column="109" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imgProcess/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        <state relative-caret-position="102">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
@@ -548,83 +549,115 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../untitled/venv/Lib/site-packages/django/forms/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="234" selection-start-line="234" selection-end-line="234" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled/venv/Lib/site-packages/django/utils/functional.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imgProcess/templates/registration/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        <state relative-caret-position="120">
+          <caret line="265" selection-start-line="265" selection-end-line="265" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imgProcess/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="51" column="26" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
+        <state relative-caret-position="212">
+          <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/media/user_images/download_new.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/user_images/download_4dkSrTa_new2_new1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/user_images/download_4dkSrTa_new2.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/user_images/download_4dkSrTa.jpg">
+    <entry file="file://$PROJECT_DIR$/media/user_images/۲۰۱۵۱۰۲۳_۰۹۴۶۴۵_RichtoneHDR.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/imgProcess/static/javascript/changeImage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="63" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
+        <state relative-caret-position="1393">
+          <caret line="120" column="10" selection-start-line="120" selection-start-column="10" selection-end-line="120" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/profile_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/user_images/sdusuf.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/user_images/sdusuf_new.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/user_images/download.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgProcess/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="46" column="47" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgProcess/static/css/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgProcess/templates/registration/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgProcess/templates/registration/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgProcess/static/css/other.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imgProcess/templates/imgProcess/change_image.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imgProcess/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="151" column="33" selection-start-line="151" selection-start-column="33" selection-end-line="151" selection-end-column="33" />
+        <state relative-caret-position="56">
+          <caret line="168" column="43" lean-forward="true" selection-start-line="168" selection-start-column="43" selection-end-line="168" selection-end-column="43" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imgProcess/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="30" column="60" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/profile_users/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/profile_users/۲۰۱۵۱۰۲۳_۰۹۱۸۵۷.jpg">
-      <provider selected="true" editor-type-id="images" />
     </entry>
   </component>
 </project>
