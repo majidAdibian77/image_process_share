@@ -12,8 +12,21 @@
     <h2>Posts:</h2>
     {% for temp_user_posts in user_posts %}
         <div class="profile_page">
-            <img src="{{ temp_user_posts.image.url }}" width="{{ temp_user_posts.image.width }}" height="{{ temp_user_posts.image.height }}">
+            <img src="{{ temp_user_posts.image.url }}" width="{{ temp_user_posts.image.width }}"
+                 height="{{ temp_user_posts.image.height }}">
             <h3><b>{{ temp_user_posts.post }}</b></h3>
         </div>
+        <label for="user-comment">comment:</label>
+        <input id="user-comment" type="text" name="{{ temp_user_posts.pk }}">
+        <button onchange="add_comment_button();">add comment</button>
+        <h3>comments:</h3>
+        {% for comment in comments %}
+            <div class="comment-post">
+                <p><b>{{ comment.profile_user.user.first_name }} {{ comment.profile_user.user.first_name }}:</b></p>
+                <img src="{{ comment.profile_user.profile_pic }}" width="20" height="20">
+                <p>{{ comment.text}}</p>
+            </div>
+        {% endfor %}
     {% endfor %}
+
 {% endblock %}

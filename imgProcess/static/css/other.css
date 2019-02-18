@@ -43,12 +43,16 @@
     background-color: khaki;
 }
 
-.user-row{
-    heith: 33.33%;
+.user-row {
+    height: 33.33%;
     padding: 10px;
     border: thick solid dodgerblue;
     text-align: center;
     background-color: cornsilk;
     border-radius: 10px;
     margin: 10px;
+}
+
+.comment-post {
+    border: thick solid black;
 }

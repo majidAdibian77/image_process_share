@@ -32,4 +32,5 @@ urlpatterns = [
                   url(r"^reset_image$", views.reset_image, name="reset_image"),
                   url(r"^change_size_of_image$", views.change_size_of_image, name="change_size_of_image"),
                   url(r"^change_contract_image$", views.change_contract_image, name="change_contract_image"),
+                  url(r"^user_add_comment$", views.user_add_comment, name="user_add_comment"),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -44,6 +44,9 @@ class UserProfileInfoForm(forms.ModelForm):
     class Meta:
         model = UserProfileInfo
         fields = ('profile_pic', 'bio',)
+        widgets = {
+            'bio': forms.Textarea(attrs={'class': 'editable medium-editor-textarea postcontent'}),
+        }
 
 
 # class Upload(forms.ModelForm):
@@ -56,6 +59,9 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = PostModel
         fields = ("image", "post",)
+        widgets = {
+            'post': forms.Textarea(attrs={'class': 'editable medium-editor-textarea postcontent'}),
+        }
 
     # def __init__(self, *args, **kwargs):
     #     self.username = kwargs.pop('username')

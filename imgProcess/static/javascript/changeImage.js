@@ -102,6 +102,24 @@ function change_contract() {
         }
     });
 }
+
+function add_comment_button() {
+    $.ajax({
+        type: "GET",
+        url: '/user_add_comment',
+        data: {
+            "comment_text": $('#user-comment').val(),
+            "post_pk": $('#user-comment').name(),
+        },
+        dataType: "json",
+        success: function () {
+            location.href = "/profile_page"
+        },
+        failure: function () {
+            alert('There is a problem!!!');
+        }
+    });
+}
 //
 // function Post() {
 //          $.ajax({

@@ -10,5 +10,8 @@
     <data-source name="db [3]" uuid="d411e4e9-831c-4456-9034-2c5ab7f18ea8">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
     </data-source>
+    <data-source name="db [4]" uuid="82409f54-bb44-47b3-be38-2c6854f27e8b">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+    </data-source>
   </component>
 </project>

@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 
 from django.contrib.auth import login, authenticate
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from imgProcess.forms import CommentForm, PostForm, UserForm, UserProfileInfoForm
-from imgProcess.models import CommentModel, UserProfileInfo, PostModel
+from imgProcess.models import CommentModel, UserProfileInfo, PostModel, CommentPostModel
 from django.views.generic import TemplateView, ListView, CreateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -81,7 +81,7 @@ def delete_image(request):
 
 
 def home(request):
-    delete_image(request)
+    # delete_image(request)
     hash = {}
     users = UserProfileInfo.objects.all()
     hash["users"] = users
@@ -134,7 +134,6 @@ def change_image(request):
     hash = {}
     images = PostModel.objects.filter(username=request.user.username)
     hash["all_image"] = images
-
     path = ""
     for temp in images:
         path = temp.image.url
@@ -295,8 +294,26 @@ def profile_page(request, pk):
     if os.path.exists(new_path2):
         os.remove(path)
         os.renames(new_path2, path)
+    comments = CommentPostModel.objects.filter(post=user_posts)
+    return render(request, "profile_page.html", {"user_info": user_info, "user_posts": user_posts, "comments": comments})
 
-    return render(request, "profile_page.html", {"user_info": user_info, "user_posts": user_posts})
+
+def user_add_comment(request):
+    post_pk = request.GET.get('post_pk', None)
+    post = get_object_or_404(PostModel, pk=post_pk)
+    comment = CommentPostModel()
+    comment.post = post
+    user_info = UserProfileInfo.objects.filter(user=request.user)
+    user_info2 = object()
+    for temp_user_info in user_info:
+        user_info2 = temp_user_info
+        break
+    comment.profile_user = user_info2
+    comment.text = request.GET.get('post_text', None)
+    comment.save()
+    return JsonResponse()
+
+
 
 # def log_in(request):
 #     # global hash
