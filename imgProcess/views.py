@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
 from imgProcess.forms import CommentForm, PostForm, UserForm, UserProfileInfoForm
-from imgProcess.models import CommentModel, UserProfileInfo, PostModel, CommentPostModel
+from imgProcess.models import CommentModel, UserProfileInfo, PostModel, CommentPostModel, FollowerUsers, FollowingUsers
 from django.views.generic import TemplateView, ListView, CreateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -55,7 +55,7 @@ def register(request):
             auth_user = authenticate(username=user_form.cleaned_data.get('username'),
                                      password=user_form.cleaned_data.get('password1'))
             login(request, auth_user)
-            return redirect("profile_page", pk= user.id)
+            return redirect("profile_page", pk=user.id)
     else:
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
@@ -111,7 +111,7 @@ def upload_image(request):
         upload_form = PostForm(data=request.POST)
         if upload_form.is_valid():
             image_form = upload_form.save(commit=False)
-            image_form.username = request.user.username
+            image_form.user = request.user
             if 'image' in request.FILES:
                 image_form.image = request.FILES['image']
                 image_form.save()
@@ -132,7 +132,7 @@ def upload_image(request):
 @login_required
 def change_image(request):
     hash = {}
-    images = PostModel.objects.filter(username=request.user.username)
+    images = PostModel.objects.filter(user=request.user)
     hash["all_image"] = images
     path = ""
     for temp in images:
@@ -275,14 +275,17 @@ def change_contract_image(request):
 
 def profile_page(request, pk):
     if pk:
-        user = User.objects.get(pk = pk)
+        user = User.objects.get(pk=pk)
     else:
         user = request.user
     user_info = UserProfileInfo.objects.filter(user=user)
-    user_posts = PostModel.objects.filter(username=user.username)
+    user_posts = PostModel.objects.filter(user=user)
     path = ""
     for temp in user_posts:
         path = temp.image.url
+        break
+    for temp in user_info:
+        user_info = temp
         break
 
     path = path[1:]
@@ -294,26 +297,59 @@ def profile_page(request, pk):
     if os.path.exists(new_path2):
         os.remove(path)
         os.renames(new_path2, path)
-    comments = CommentPostModel.objects.filter(post=user_posts)
-    return render(request, "profile_page.html", {"user_info": user_info, "user_posts": user_posts, "comments": comments})
+    follow_users = user.followers.all()
+    test_follow = False
+    for follow_user in follow_users.iterator():
+        if request.user.username == follow_user.follower.username:
+            test_follow = True
+            break
+    num_follower = user.followers.all().count()
+    num_following = user.following.all().count()
+    return render(request, "profile_page.html", {"user_info": user_info, "user_posts": user_posts,
+                                                 "test_follow":test_follow, "num_follower":num_follower,
+                                                 "num_following":num_following})
 
 
 def user_add_comment(request):
     post_pk = request.GET.get('post_pk', None)
-    post = get_object_or_404(PostModel, pk=post_pk)
-    comment = CommentPostModel()
-    comment.post = post
-    user_info = UserProfileInfo.objects.filter(user=request.user)
-    user_info2 = object()
-    for temp_user_info in user_info:
-        user_info2 = temp_user_info
-        break
-    comment.profile_user = user_info2
-    comment.text = request.GET.get('post_text', None)
+    post = PostModel.objects.get(pk=post_pk)
+    post.save()
+    user = User.objects.get(pk= request.user.id)
+    comment_text = request.GET.get('post_text', None)
+    comment = CommentPostModel(user=user, post=post, text=comment_text)
     comment.save()
-    return JsonResponse()
+    data = {
+        "url": "/profile_page/" + post.user.pk,
+    }
+    return JsonResponse(data)
 
 
+def follow(request):
+    user_pk = request.GET.get("user_pk", None)
+    user = User.objects.get(pk=user_pk)
+    follower = request.user
+    followerUser = FollowerUsers(follower=follower, user=user)
+    followerUser.save()
+    followingUser = FollowingUsers(following=user, user=follower)
+    followingUser.save()
+    data = {
+        "url": "/profile_page/"+user_pk,
+    }
+    return JsonResponse(data)
+
+
+def unfollow(request):
+    user_pk = request.GET.get("user_pk", None)
+    user = User.objects.get(pk=user_pk)
+    follower = request.user
+    followerUser = FollowerUsers.objects.filter(follower=follower, user=user)
+    followerUser.delete()
+    followingUser = FollowingUsers.objects.filter(following=user, user=follower)
+    followingUser.delete()
+    data = {
+        "url": "/profile_page/" + user_pk,
+    }
+    return JsonResponse(data)
 
 # def log_in(request):
 #     # global hash

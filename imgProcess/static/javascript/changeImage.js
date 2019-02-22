@@ -20,7 +20,7 @@ function reset_image() {
     var general_url_image = $('#show_image').attr('name');
     var new_url_image = $('#show_image').attr('src');
 
-    if (general_url_image != new_url_image){
+    if (general_url_image != new_url_image) {
         $.ajax({
             type: "GET",
             url: '/reset_image',
@@ -86,7 +86,7 @@ function change_size() {
 }
 
 function change_contract() {
-     $.ajax({
+    $.ajax({
         type: "GET",
         url: '/change_contract_image',
         data: {
@@ -103,37 +103,57 @@ function change_contract() {
     });
 }
 
-function add_comment_button() {
+function add_comment_button(postPk) {
+    alert(postPk);
     $.ajax({
         type: "GET",
         url: '/user_add_comment',
         data: {
-            "comment_text": $('#user-comment').val(),
-            "post_pk": $('#user-comment').name(),
+            "comment_text": $('#user-comment-' + postPk).val(),
+            "post_pk": postPk,
         },
         dataType: "json",
-        success: function () {
-            location.href = "/profile_page"
+        success: function (data) {
+            location.href = data["url"];
+            alert("goooooood")
         },
         failure: function () {
             alert('There is a problem!!!');
         }
     });
 }
-//
-// function Post() {
-//          $.ajax({
-//         type: "GET",
-//         url: '/add_post',
-//         data: {
-//             "general_image_url": $('#show_image').attr('name'),
-//             "new_image_url": $('#show_image').attr('src'),
-//             "post": $('#post').val(),
-//         },
-//         dataType: "json",
-//         success: function (data) {
-//         },
-//         failure: function (data) {
-//             alert('There is a problem!!!');
-//         }
-//     });
+
+function follow() {
+    $.ajax({
+        type: "GET",
+        url: '/follow',
+        data: {
+            "user_pk": $('#follow-button').attr("name")
+        },
+        dataType: "json",
+        success: function (data) {
+            location.href = data["url"];
+        },
+        failure: function () {
+            alert('There is a problem!!!');
+        }
+    });
+}
+
+
+function unfollow() {
+    $.ajax({
+        type: "GET",
+        url: '/unfollow',
+        data: {
+            "user_pk": $('#follow-button').attr("name")
+        },
+        dataType: "json",
+        success: function (data) {
+            location.href = data["url"];
+        },
+        failure: function () {
+            alert('There is a problem!!!');
+        }
+    });
+}

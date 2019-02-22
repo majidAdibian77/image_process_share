@@ -2,29 +2,45 @@
 {% extends "base.html" %}
 {% block body_block %}
     <h2>Profile:</h2>
-    {% for temp_user_info in user_info %}
+    {% if user_info %}
         <div class="profile_page">
-            <img src="{{ temp_user_info.profile_pic.url }}" width="400" height="400">
-            <h3><b>Name: {{ temp_user_info.user.first_name }} {{ temp_user_info.user.last_name }}</b></h3>
-            <h3><b>Bio: </b>{{ temp_user_info.bio }}</h3>
+            <img src="{{ user_info.profile_pic.url }}" width="400" height="400">
+            <h3><b>Name: {{ user_info.user.first_name }} {{ user_info.user.last_name }}</b></h3>
+            <h3><b>Bio: </b>{{ user_info.bio }}</h3>
+        <div>
+            <p>followers: {{ num_follower }}</p>
+            <p>followings: {{ num_following }}</p>
         </div>
-    {% endfor %}
+            {% if user.username != user_info.user.username %}
+                {% if not test_follow %}
+                    <button id="follow-button" onclick="follow();" name="{{ user_info.user.id }}">Follow</button>
+                {% else %}
+                    <button id="follow-button" onclick="unfollow();" name="{{ user_info.user.id }}">unfollow</button>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
     <h2>Posts:</h2>
     {% for temp_user_posts in user_posts %}
         <div class="profile_page">
             <img src="{{ temp_user_posts.image.url }}" width="{{ temp_user_posts.image.width }}"
                  height="{{ temp_user_posts.image.height }}">
             <h3><b>{{ temp_user_posts.post }}</b></h3>
+            <p>{{ temp_user_posts.post_time }}</p>
+
         </div>
-        <label for="user-comment">comment:</label>
-        <input id="user-comment" type="text" name="{{ temp_user_posts.pk }}">
-        <button onchange="add_comment_button();">add comment</button>
+        {% if user.username != temp_user_posts.username %}
+            <label for="user-comment-{{ temp_user_posts.pk }}">comment:</label>
+            <input id="user-comment-{{ temp_user_posts.pk }}" type="text">
+            <button onclick="add_comment_button({{ temp_user_posts.pk }});">add comment</button>
+
+        {% endif %}
         <h3>comments:</h3>
-        {% for comment in comments %}
+        {% for comment in temp_user_posts.comments.all %}
             <div class="comment-post">
                 <p><b>{{ comment.profile_user.user.first_name }} {{ comment.profile_user.user.first_name }}:</b></p>
-                <img src="{{ comment.profile_user.profile_pic }}" width="20" height="20">
-                <p>{{ comment.text}}</p>
+                <img src="{{ comment.user.userProfileInfo.profile_pic.url }}" width="20" height="20">
+                <p>{{ comment.text }}</p>
             </div>
         {% endfor %}
     {% endfor %}

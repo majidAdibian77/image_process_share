@@ -61,12 +61,38 @@ body {
     border-radius: 5px;
 }
 
-
 .left-column-profile {
     float: left;
     width: 25%;
     padding-left: 30px;
 }
+
+.leftcolumn-followers {
+    float: left;
+    width: 50%;
+    padding: 5px;
+    background: beige;
+}
+
+.leftcolumn-followers img {
+    border-radius: 20%;
+}
+
+.rightcolumn-followings {
+    float: left;
+    width: 50%;
+    padding: 5px;
+    background: beige;
+}
+
+.rightcolumn-followings img {
+    border-radius: 20%;
+}
+
+/*.friend-account {*/
+/*border: brown thin solid;*/
+/*align-content: center;*/
+/*}*/
 
 li {
     margin: 5px;

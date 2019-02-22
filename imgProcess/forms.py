@@ -63,6 +63,7 @@ class PostForm(forms.ModelForm):
             'post': forms.Textarea(attrs={'class': 'editable medium-editor-textarea postcontent'}),
         }
 
+
     # def __init__(self, *args, **kwargs):
     #     self.username = kwargs.pop('username')
     #     super(Upload, self).__init__(*args, **kwargs)
