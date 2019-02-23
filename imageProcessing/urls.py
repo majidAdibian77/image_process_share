@@ -35,4 +35,6 @@ urlpatterns = [
                   url(r"^user_add_comment$", views.user_add_comment, name="user_add_comment"),
                   url(r"^follow$", views.follow, name="follow"),
                   url(r"^unfollow$", views.unfollow, name="unfollow"),
+                  url(r"^approve_comment$", views.approve_comment, name="approve_comment"),
+                  url(r"^delete_comment$", views.delete_comment, name="delete_comment"),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

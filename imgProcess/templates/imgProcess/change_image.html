@@ -25,8 +25,8 @@
                                id="contract_range">
                     </div>
                 </div>
-                {% for img in all_image %}
-                    {% if img.username == user.username %}
+                {% if img %}
+                    {% if img.user == user %}
                         <div class="image">
                             <img id="show_image" name="{{ img.image.url }}" src="{{ img.image.url }}" alt="your image"
                                  width="{{ img.image.width }}"
@@ -38,7 +38,7 @@
                             <p id="post">{{ img.post }}</p>
                         </div>
                     {% endif %}
-                {% endfor %}
+                {% endif %}
                 <form action="{% url "profile_page" pk=user.id %}">
                     <button type="submit">POST</button>
                 </form>

@@ -1,7 +1,16 @@
+
+@font-face {
+  font-family: myFirstFont;
+  src: url(https://fonts.googleapis.com/css?family=Great+Vibes);
+}
 body {
     padding: 20px;
     background-color: lightblue;
+    font-family: myFirstFont;
 }
+
+
+
 
 * {
     box-sizing: border-box;

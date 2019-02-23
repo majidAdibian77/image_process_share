@@ -38,12 +38,12 @@ class UserProfileInfo(models.Model):
 
 
 class FollowingUsers(models.Model):
-    following = models.OneToOneField(User, on_delete=models.CASCADE, default="", null=True)
+    following = models.ForeignKey(User, on_delete=models.CASCADE, default="", null=True, unique=False)
     user = models.ForeignKey(User, related_name="following", on_delete=models.CASCADE)
 
 
 class FollowerUsers(models.Model):
-    follower = models.OneToOneField(User, on_delete=models.CASCADE, default="", null=True)
+    follower = models.ForeignKey(User, on_delete=models.CASCADE, default="", null=True, unique=False)
     user = models.ForeignKey(User, related_name="followers", on_delete=models.CASCADE)
 
 # class ImageModel(models.Model):
@@ -61,7 +61,7 @@ class FollowerUsers(models.Model):
 
 
 class PostModel(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user", )
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user", unique=False)
     image = models.ImageField(upload_to='user_images', blank=True)
     post = models.TextField(max_length=100, blank=True)
     post_time = models.DateTimeField(default=datetime.now, blank=True)
@@ -75,7 +75,7 @@ class PostModel(models.Model):
 
 
 class CommentPostModel(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=False)
     post = models.ForeignKey(PostModel, on_delete=models.CASCADE, related_name="comments")
     text = models.TextField(verbose_name="Text")
     comment_time = models.DateTimeField(default=datetime.now)

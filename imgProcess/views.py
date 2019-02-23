@@ -117,26 +117,15 @@ def upload_image(request):
                 image_form.save()
                 return redirect("change_image")
         error = "There is a problem in uploading!!"
-    #     upload_form = Upload(request.POST, request.FILES)
-    #     # upload_form.set_user(request.user.username)
-    #     if upload_form.is_valid():
-    #         if upload_form.cleaned_data["username"] != request.user.username:
-    #             error = "Your username is false"
-    #         else:
-    #             upload_form.save()
-    #
-    #             return redirect("change_image")
     return render(request, "uploadImage.html", {"form": upload_form, "error": error})
 
 
 @login_required
 def change_image(request):
     hash = {}
-    images = PostModel.objects.filter(user=request.user)
-    hash["all_image"] = images
-    path = ""
-    for temp in images:
-        path = temp.image.url
+    image = PostModel.objects.filter(user=request.user).order_by("-post_time")[0]
+    hash["img"] = image
+    path = image.image.url
     img = Image.open(path[1:])
     width = img.size[0]
     height = img.size[1]
@@ -160,17 +149,6 @@ def change_black_white(request):
     image_file = Image.open(new_image_url[1:])  # open colour image
     image_file = image_file.convert('L')  # convert image to black and white
 
-    # if general_image_url == new_image_url:
-    #     image_url = general_image_url
-    #     new_image_url = image_url[:image_url.rfind('.')] + "_new1" + image_url[image_url.rfind('.'):]
-    # else:
-    #     image_url = new_image_url
-    #     path = general_image_url[:general_image_url.rfind('.')] + "_new1" + general_image_url[
-    #                                                                         general_image_url.rfind('.'):]
-    #     if new_image_url == path:
-    #         os.remove(path[1:])
-    #         new_image_url = general_image_url[:general_image_url.rfind('.')] + "_new2" + general_image_url[
-    #                                                                                      general_image_url.rfind('.'):]
     new_image_url1 = general_image_url[:general_image_url.rfind('.')] + "_new1" + general_image_url[
                                                                                   general_image_url.rfind('.'):]
     new_image_url2 = general_image_url[:general_image_url.rfind('.')] + "_new2" + general_image_url[
@@ -246,57 +224,26 @@ def change_contract_image(request):
     return JsonResponse(data)
 
 
-# def add_post(request):
-#     general_image_url = request.GET.get("general_image_url", None)
-#     new_image_url = request.GET.get("new_image_url", None)
-#     user_post = request.GET.get("post", None)
-#     if general_image_url == new_image_url:
-#         image_url = general_image_url
-#     else:
-#         image_url = new_image_url
-#         os.remove(general_image_url)
-#     images = PostModel.objects.filter(username=request.user.username)
-#     post_img = object()
-#     for img in images.all():
-#         img.image.url = image_url
-#         img.save()
-#         post_img = img
-#         break
-#     Post = PostModel()
-#     Post.username = request.user.username
-#     Post.image = post_img
-#     Post.post = user_post
-#     Post.save()
-#     data={
-#         "successful": True
-#     }
-#     return JsonResponse(data)
-
-
 def profile_page(request, pk):
     if pk:
         user = User.objects.get(pk=pk)
     else:
         user = request.user
-    user_info = UserProfileInfo.objects.filter(user=user)
-    user_posts = PostModel.objects.filter(user=user)
-    path = ""
-    for temp in user_posts:
-        path = temp.image.url
-        break
-    for temp in user_info:
-        user_info = temp
-        break
 
-    path = path[1:]
-    new_path1 = path[:path.rfind('.')] + "_new1" + path[path.rfind('.'):]
-    new_path2 = path[:path.rfind('.')] + "_new2" + path[path.rfind('.'):]
-    if os.path.exists(new_path1):
-        os.remove(path)
-        os.renames(new_path1, path)
-    if os.path.exists(new_path2):
-        os.remove(path)
-        os.renames(new_path2, path)
+    user_info = UserProfileInfo.objects.filter(user=user)[0]
+    user_posts = PostModel.objects.filter(user=user).order_by("post_time")
+    if user_posts:
+        path = user_posts[0].image.url
+
+        path = path[1:]
+        new_path1 = path[:path.rfind('.')] + "_new1" + path[path.rfind('.'):]
+        new_path2 = path[:path.rfind('.')] + "_new2" + path[path.rfind('.'):]
+        if os.path.exists(new_path1):
+            os.remove(path)
+            os.renames(new_path1, path)
+        if os.path.exists(new_path2):
+            os.remove(path)
+            os.renames(new_path2, path)
     follow_users = user.followers.all()
     test_follow = False
     for follow_user in follow_users.iterator():
@@ -306,20 +253,42 @@ def profile_page(request, pk):
     num_follower = user.followers.all().count()
     num_following = user.following.all().count()
     return render(request, "profile_page.html", {"user_info": user_info, "user_posts": user_posts,
-                                                 "test_follow":test_follow, "num_follower":num_follower,
-                                                 "num_following":num_following})
+                                                 "test_follow": test_follow, "num_follower": num_follower,
+                                                 "num_following": num_following})
 
 
 def user_add_comment(request):
     post_pk = request.GET.get('post_pk', None)
     post = PostModel.objects.get(pk=post_pk)
     post.save()
-    user = User.objects.get(pk= request.user.id)
-    comment_text = request.GET.get('post_text', None)
-    comment = CommentPostModel(user=user, post=post, text=comment_text)
+    comment_text = request.GET.get('comment_text', None)
+    comment = CommentPostModel(user=request.user, post=post, text=comment_text)
     comment.save()
     data = {
-        "url": "/profile_page/" + post.user.pk,
+        "url": "/profile_page/" + str(post.user.pk),
+    }
+    return JsonResponse(data)
+
+
+def approve_comment(request):
+    comment_pk = request.GET.get('comment_pk', None)
+    comment = CommentPostModel.objects.get(pk=comment_pk)
+    comment.approve()
+    comment.save()
+    # user_pk = request.GET.get('user_pk', None)
+    data = {
+        "url": "/profile_page/" + str(request.user.pk),
+    }
+    return JsonResponse(data)
+
+
+def delete_comment(request):
+    comment_pk = request.GET.get('comment_pk', None)
+    comment = CommentPostModel.objects.get(pk=comment_pk)
+    comment.delete()
+    # user_pk = request.GET.get('user_pk', None)
+    data = {
+        "url": "/profile_page/" + str(request.user.pk),
     }
     return JsonResponse(data)
 
@@ -333,7 +302,7 @@ def follow(request):
     followingUser = FollowingUsers(following=user, user=follower)
     followingUser.save()
     data = {
-        "url": "/profile_page/"+user_pk,
+        "url": "/profile_page/" + user_pk,
     }
     return JsonResponse(data)
 
@@ -350,45 +319,3 @@ def unfollow(request):
         "url": "/profile_page/" + user_pk,
     }
     return JsonResponse(data)
-
-# def log_in(request):
-#     # global hash
-#     hash = {}
-#     hash["log_in_form"] = LogInForm()
-#     hash["user_pass"] = True
-#     if request.method == "POST":
-#         log_in_form = LogInForm(request.POST)
-#         if log_in_form.is_valid():
-#             check = False
-#             name = ""
-#             for user in SignInModel.objects.all():
-#                 if log_in_form.user_name == user.user_name and log_in_form.password == user.password:
-#                     check = True
-#                     name = user.name
-#                     break
-#             if check:
-#                 hash["user"] = name
-#                 return redirect("home")
-#         hash["user_pass"] = False
-#     return render(request, "imgProcess/login.html", hash)
-#
-
-# def sign_in(request):
-#     global hash
-#     hash["sign_in_form"] = SignInForm()
-#     if request.method == "POST":
-#         sign_in_form = SignInForm(request.POST)
-#         if sign_in_form.is_valid():
-#             check = True
-#             name = ""
-#             for user in SignInModel.objects.all():
-#                 if sign_in_form.user_name == user.user_name:
-#                     check = False
-#                     name = user.name
-#                     break
-#             if check:
-#                 hash["user"] = name
-#                 return redirect("home")
-#         hash["user_pass"] = False
-#     return render(request, "imgProcess/signin.html", hash)
-#

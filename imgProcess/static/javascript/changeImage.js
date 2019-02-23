@@ -104,7 +104,6 @@ function change_contract() {
 }
 
 function add_comment_button(postPk) {
-    alert(postPk);
     $.ajax({
         type: "GET",
         url: '/user_add_comment',
@@ -115,7 +114,6 @@ function add_comment_button(postPk) {
         dataType: "json",
         success: function (data) {
             location.href = data["url"];
-            alert("goooooood")
         },
         failure: function () {
             alert('There is a problem!!!');
@@ -147,6 +145,42 @@ function unfollow() {
         url: '/unfollow',
         data: {
             "user_pk": $('#follow-button').attr("name")
+        },
+        dataType: "json",
+        success: function (data) {
+            location.href = data["url"];
+        },
+        failure: function () {
+            alert('There is a problem!!!');
+        }
+    });
+}
+
+function approve_comment(comment_pk) {
+    $.ajax({
+        type: "GET",
+        url: '/approve_comment',
+        data: {
+            "comment_pk": comment_pk,
+            // "user_pk": $('#approve-comment-' + comment_pk).attr("name")
+        },
+        dataType: "json",
+        success: function (data) {
+            location.href = data["url"];
+        },
+        failure: function () {
+            alert('There is a problem!!!');
+        }
+    });
+}
+
+function delete_comment(comment_pk) {
+    $.ajax({
+        type: "GET",
+        url: '/delete_comment',
+        data: {
+            "comment_pk": comment_pk,
+            // "user_pk": $('#approve-comment-' + comment_pk).attr("name")
         },
         dataType: "json",
         success: function (data) {
