@@ -17,6 +17,10 @@
                 {% else %}
                     <button id="follow-button" onclick="unfollow();" name="{{ user_info.user.id }}">unfollow</button>
                 {% endif %}
+            {% else %}
+                <a href="{% url "edit_profile" %}">
+                <button id="edit-profile" >edit</button>
+                </a>
             {% endif %}
         </div>
     {% endif %}

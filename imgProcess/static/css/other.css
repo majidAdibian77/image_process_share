@@ -64,17 +64,23 @@
     border-radius: 5px;
 }
 
-.all-comment {
-    text-align: left;
-}
-
-.all-comment button{
-    padding: 5px;
+#edit-profile {
+    padding: 15px;
     margin: 5px;
     background-color: aqua;
     border-radius: 5px;
 }
 
+.all-comment {
+    text-align: left;
+}
+
+.all-comment button {
+    padding: 5px;
+    margin: 5px;
+    background-color: aqua;
+    border-radius: 5px;
+}
 
 .comment-post {
     border: thin solid blue;
