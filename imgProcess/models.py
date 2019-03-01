@@ -46,19 +46,6 @@ class FollowerUsers(models.Model):
     follower = models.ForeignKey(User, on_delete=models.CASCADE, default="", null=True, unique=False)
     user = models.ForeignKey(User, related_name="followers", on_delete=models.CASCADE)
 
-# class ImageModel(models.Model):
-#     username = models.CharField(max_length=20, verbose_name="Username", default="")
-#     image = models.ImageField(upload_to='user_images', blank=True)
-#
-#     def __str__(self):
-#         return self.username
-
-
-#
-# class LogInModel(models.Model):
-#     user_name = models.CharField(max_length=20, verbose_name="User Name")
-#     password = models.CharField(max_length=20, verbose_name="password")
-
 
 class PostModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user", unique=False)

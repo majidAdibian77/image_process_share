@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from imgProcess.models import CommentModel, UserProfileInfo, PostModel
+from imgProcess.models import UserProfileInfo, PostModel
 from django import forms
 
 
@@ -36,7 +36,6 @@ class UserProfileInfoForm(forms.ModelForm):
         widgets = {
             'bio': forms.Textarea(attrs={'class': 'editable medium-editor-textarea postcontent'}),
         }
-
 
 
 class PostForm(forms.ModelForm):

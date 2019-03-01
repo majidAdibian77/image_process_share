@@ -19,7 +19,7 @@
                 {% endif %}
             {% else %}
                 <a href="{% url "edit_profile" %}">
-                <button id="edit-profile" >edit</button>
+                    <button id="edit-profile">edit</button>
                 </a>
             {% endif %}
         </div>
@@ -31,7 +31,11 @@
                  height="{{ temp_user_posts.image.height }}">
             <h3><b>{{ temp_user_posts.post }}</b></h3>
             <p>{{ temp_user_posts.post_time }}</p>
-
+            {% if user == temp_user_posts.user %}
+                <a href="{% url "delete_post" pk=temp_user_posts.pk %}">
+                    <button id="delete-post">delete</button>
+                </a>
+            {% endif %}
             <div class="all-comment">
                 {% if user != temp_user_posts.user %}
                     <label for="user-comment-{{ temp_user_posts.pk }}">comment:</label>
@@ -65,6 +69,12 @@
                             <p><b>{{ comment.user.first_name }} {{ comment.user.last_name }}:</b></p>
                             <img src="{{ comment.user.userProfileInfo.profile_pic.url }}" width="50" height="50">
                             <p>{{ comment.text }}</p>
+                            {% if user == temp_user_posts.user %}
+                                <button onclick="delete_comment({{ comment.pk }});"
+                                        id="delete-comment-"{{ comment.pk }}>
+                                    delete
+                                </button>
+                            {% endif %}
                         </div>
                     {% endif %}
                 {% endfor %}

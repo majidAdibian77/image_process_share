@@ -1,16 +1,16 @@
-import numpy as np
+from msilib.schema import File
+
 from PIL import Image, ImageEnhance
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 
 from django.contrib.auth import login, authenticate
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from imgProcess.forms import PostForm, UserForm, UserProfileInfoForm, UserEditForm
-from imgProcess.models import CommentModel, UserProfileInfo, PostModel, CommentPostModel, FollowerUsers, FollowingUsers
-from django.views.generic import TemplateView, ListView, CreateView
+from imgProcess.models import UserProfileInfo, PostModel, CommentPostModel, FollowerUsers, FollowingUsers
+from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from imageProcessing import settings
 import os
 
 
@@ -25,13 +25,6 @@ class ImageUpload(LoginRequiredMixin, TemplateView):
     login_url = "/login/"
     redirect_field_name = "imgProcess/change_image.html"
     template_name = "uploadImage.html"
-
-
-# class CommentFormView(LoginRequiredMixin, CreateView):
-#     login_url = "/login/"
-#     redirect_field_name = "imgProcess/home.html"
-#     form_class = CommentForm
-#     model = CommentModel
 
 
 def register(request):
@@ -51,6 +44,8 @@ def register(request):
             #
             if 'profile_pic' in request.FILES:
                 profile.profile_pic = request.FILES['profile_pic']
+            # else:
+            #     profile.profile_pic("media/server_images/user_image.jpg", File().read())
             profile.save()
             auth_user = authenticate(username=user_form.cleaned_data.get('username'),
                                      password=user_form.cleaned_data.get('password1'))
@@ -86,20 +81,6 @@ def home(request):
     users = UserProfileInfo.objects.all()
     hash["users"] = users
     return render(request, "imgProcess/home.html", hash)
-
-
-# def add_comment(request):
-#     # delete_image(request)
-#     hash = {}
-#     comment_form = CommentForm()
-#     hash["comment_form"] = comment_form
-#     if request.method == "POST":
-#         comment_form = CommentForm(request.POST)
-#         if comment_form.is_valid():
-#             if (request.user.is_authenticated):
-#                 comment_form.save()
-#                 return redirect("home")
-#     return render(request, "imgProcess/addComment.html", hash)
 
 
 @login_required
@@ -262,13 +243,10 @@ def edit_profile(request):
         user_form = UserEditForm(data=request.POST)
         user_form.username = request.user.username
         profile_form = UserProfileInfoForm(data=request.POST)
-        # user = User.objects.get(pk=request.user.id)
-        # if user.username != user_form.username:
-        #     user.username = user_form.username
 
         if user_form.is_valid() and profile_form.is_valid():
             user = User.objects.get(pk=request.user.id)
-            user.password = user_form.cleaned_data.get("password1")
+            user.set_password = user_form.cleaned_data.get("password1")
             user.first_name = user_form.cleaned_data.get("first_name")
             user.last_name = user_form.cleaned_data.get("last_name")
             user.save()
@@ -276,8 +254,6 @@ def edit_profile(request):
             profile = UserProfileInfo.objects.get(user=user)
             profile.user = user
             profile.bio = profile_form.cleaned_data.get("bio")
-            # profile.profile_pic = profile_form.cleaned_data.get("profile_pic")
-            # profile.save()
 
             #
             # or we can get user in other way:
@@ -317,7 +293,6 @@ def approve_comment(request):
     comment = CommentPostModel.objects.get(pk=comment_pk)
     comment.approve()
     comment.save()
-    # user_pk = request.GET.get('user_pk', None)
     data = {
         "url": "/profile_page/" + str(request.user.pk),
     }
@@ -361,3 +336,9 @@ def unfollow(request):
         "url": "/profile_page/" + user_pk,
     }
     return JsonResponse(data)
+
+
+def delete_post(request, pk):
+    post = PostModel.objects.get(pk=pk)
+    post.delete()
+    return redirect("profile_page", pk=request.user.id)
