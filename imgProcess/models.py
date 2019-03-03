@@ -31,7 +31,7 @@ class CommentModel(models.Model):
 class UserProfileInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="userProfileInfo")
     bio = models.TextField(max_length=100, blank=True, default="Bio")
-    profile_pic = models.ImageField(upload_to='profile_users', blank=True)
+    profile_pic = models.ImageField(upload_to='profile_users', default="server_images/user_image.jpg", blank=True)
 
     def __str__(self):
         return self.user.username
