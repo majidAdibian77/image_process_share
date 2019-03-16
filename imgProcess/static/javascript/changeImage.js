@@ -30,8 +30,8 @@ function reset_image() {
             dataType: "json",
             success: function (data) {
                 $("#show_image").attr("src", data["newImage_url"]);
-                $("#show_image").attr("width", 400);
-                $("#show_image").attr("height", 500);
+                $("#show_image").attr("width", data["height"]);
+                $("#show_image").attr("height", data["width"]);
             },
             failure: function (data) {
                 alert('There is a problem!!!');

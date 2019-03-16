@@ -175,8 +175,21 @@ def reset_image(request):
     path = image_url[1:]
     os.remove(path=path)
     new_image_url = image_url[:(image_url.rfind('_'))] + image_url[(image_url.rfind('.')):]
+    img = Image.open(new_image_url[1:])
+    width = img.size[0]
+    height = img.size[1]
+    if width > 500:
+        width = 500
+    elif width < 200:
+        width = 200
+    if height > 600:
+        height = 600
+    elif height < 300:
+        height = 300
     data = {
-        "newImage_url": new_image_url
+        "newImage_url": new_image_url,
+        "width": width,
+        "height": height
     }
     return JsonResponse(data)
 
